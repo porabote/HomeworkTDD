@@ -1,22 +1,28 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class PhoneBook {
 
-    HashMap phoneBookList = new HashMap();
-    HashMap phoneBookListNumbers = new HashMap();
+    Map phoneBookList = new HashMap();
 
     public int add(String name, String phone) {
         if (!phoneBookList.containsKey(name)) {
             phoneBookList.put(name, phone);
-            phoneBookListNumbers.put(phone, name);
         }
-        System.out.println(phoneBookList);
+
         return phoneBookList.size();
     }
 
     public String findByNumber(String phone) {
-        if (phoneBookListNumbers.containsKey(phone)) {
-            return (String) phoneBookListNumbers.get(phone);
+        if (phoneBookList.containsValue(phone)) {
+            Set<Map.Entry<String, String>> set = phoneBookList.entrySet();
+            for (Map.Entry entry : set) {
+                if (entry.getValue().equals(phone)) {
+                    return (String) entry.getKey();
+                }
+            }
         }
         return null;
     }
@@ -27,9 +33,10 @@ public class PhoneBook {
         }
         return null;
     }
-//
-//    public int printAllNames(String name, String phone) {
-//        return 0;
-//    }
+
+    public TreeMap<String, String> printAllNames() {
+
+        return null;
+    }
 
 }

@@ -1,18 +1,18 @@
 import org.junit.jupiter.api.*;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class PhoneBookTest {
 
     PhoneBook phoneBook;
-    HashMap phoneBookList;
-    HashMap phoneBookListNumbers;
+    Map<String, String> phoneBookList;
 
     @BeforeEach
     public void beforeEachTests() {
         phoneBook = new PhoneBook();
         phoneBookList = new HashMap();
-        phoneBookListNumbers  = new HashMap();
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PhoneBookTest {
         //act   when
         phoneBook.add(expected, phone);
         String name = phoneBook.findByNumber(phone);
-        System.out.println(name);
+
         //assert  then
         Assertions.assertEquals(expected, name);
     }
@@ -51,17 +51,30 @@ public class PhoneBookTest {
 
         //act   when
         phoneBook.add(name, expected);
-        String phone = phoneBook.findByNumber(name);
+        String phone = phoneBook.findByName(name);
 
         //assert  then
         Assertions.assertEquals(expected, phone);
     }
 
+    @Test
+    public void printAllNamesTest() {//String name, String phone
+        //act   when
+        phoneBook.add("Valera", "+7 556677");
+        phoneBook.add("Alena", "+7 556678");
+
+        String expected = "Alena";
+
+        TreeMap<String, String> sortedList = phoneBook.printAllNames();
+
+        Assertions.assertEquals(expected, sortedList.firstKey());
+    }
+
+
     @AfterEach
     public void afterEachTest() {
         phoneBook = null;
         phoneBookList = null;
-        phoneBookListNumbers = null;
     }
 
 
