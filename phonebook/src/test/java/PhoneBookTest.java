@@ -19,14 +19,13 @@ public class PhoneBookTest {
         String name = "Valera";
         String phone = "+7 556677";
         int expected = phoneBookList.size() + 1;
-        int expectedIfExists = phoneBookList.size();
         //act   when
         int countContacts = phoneBook.add(name, phone);
         //assert  then
         Assertions.assertEquals(countContacts, expected);
 
         int countContactsIfExists = phoneBook.add(name, phone);
-        Assertions.assertEquals(countContactsIfExists, expectedIfExists);
+        Assertions.assertEquals(countContactsIfExists, expected);
     }
 
 //    @Test

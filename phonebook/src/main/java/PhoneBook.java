@@ -1,7 +1,15 @@
+import java.util.HashMap;
+
 public class PhoneBook {
 
+    HashMap phoneBookList = new HashMap();
+
     public int add(String name, String phone) {
-        return 0;
+        if (!phoneBookList.containsKey(name)) {
+            phoneBookList.put(name, phone);
+        }
+        System.out.println(phoneBookList);
+        return phoneBookList.size();
     }
 
     public int findByNumber(String phone) {
