@@ -35,8 +35,10 @@ public class PhoneBook {
     }
 
     public TreeMap<String, String> printAllNames() {
-
-        return null;
+        TreeMap<String, String> sortedList = new TreeMap<>();
+        sortedList.putAll(phoneBookList);
+        System.out.println(sortedList);
+        return sortedList;
     }
 
 }
