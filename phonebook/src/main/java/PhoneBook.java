@@ -21,9 +21,9 @@ public class PhoneBook {
         return null;
     }
 
-//    public String findByName(String name) {
-//        return 0;
-//    }
+    public String findByName(String name) {
+        return null;
+    }
 //
 //    public int printAllNames(String name, String phone) {
 //        return 0;

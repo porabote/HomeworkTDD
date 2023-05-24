@@ -27,7 +27,7 @@ public class PhoneBookTest {
         Assertions.assertEquals(countContacts, expected);
 
         int countContactsIfExists = phoneBook.add(name, phone);
-        Assertions.assertEquals(countContactsIfExists, expected);
+        Assertions.assertEquals(expected, countContactsIfExists);
     }
 
     @Test
@@ -40,9 +40,22 @@ public class PhoneBookTest {
         String name = phoneBook.findByNumber(phone);
         System.out.println(name);
         //assert  then
-        Assertions.assertEquals(name, expected);
+        Assertions.assertEquals(expected, name);
     }
 
+    @Test
+    public void findByNameTest() {//String name, String phone
+
+        String name = "Valera";
+        String expected = "+7 556677";
+
+        //act   when
+        phoneBook.add(name, expected);
+        String phone = phoneBook.findByNumber(name);
+
+        //assert  then
+        Assertions.assertEquals(expected, phone);
+    }
 
     @AfterEach
     public void afterEachTest() {
