@@ -15,6 +15,9 @@ public class PhoneBook {
     }
 
     public String findByNumber(String phone) {
+        if (phoneBookListNumbers.containsKey(phone)) {
+            return (String) phoneBookListNumbers.get(phone);
+        }
         return null;
     }
 
